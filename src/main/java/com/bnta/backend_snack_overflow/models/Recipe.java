@@ -1,17 +1,38 @@
 package com.bnta.backend_snack_overflow.models;
 
+import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "recipes")
 public class Recipe {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private int prepTime;
+
+    @Column
     private int cookTime;
+
+    @Column
     private int portionSize;
+
+    @Column
     private Cuisine cuisine;
+
+    @OneToMany
     private List <Measurement> measurements;
+
+    @ManyToMany
     private List <Equipment> equipments;
 
     protected Recipe (){}
