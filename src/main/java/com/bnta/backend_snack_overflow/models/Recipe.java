@@ -33,6 +33,10 @@ public class Recipe {
     private List <Measurement> measurements;
 
     @ManyToMany
+    @JoinTable(name = "recipes_equipments",
+            joinColumns = {@JoinColumn(name = "recipe_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "equipment_id", nullable = false)}
+    )
     private List <Equipment> equipments;
 
     protected Recipe (){}

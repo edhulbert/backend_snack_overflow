@@ -15,7 +15,7 @@ public class Equipment {
     @Column
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "equipments")
     private List <Recipe> recipes;
 
     protected Equipment () {}
