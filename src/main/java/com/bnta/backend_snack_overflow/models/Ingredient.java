@@ -1,5 +1,7 @@
 package com.bnta.backend_snack_overflow.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Ingredient {
     private String name;
 
     @OneToMany(mappedBy = "ingredient")
+    @JsonIgnoreProperties({"ingredient"})
     private List<Measurement> measurements;
 
     protected Ingredient () {}

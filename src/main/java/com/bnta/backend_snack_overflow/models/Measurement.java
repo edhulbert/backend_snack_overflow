@@ -1,5 +1,7 @@
 package com.bnta.backend_snack_overflow.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,10 +17,12 @@ public class Measurement {
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
+    @JsonIgnoreProperties({"measurements"})
     private Recipe recipe;
 
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
+    @JsonIgnoreProperties({"measurements"})
     private Ingredient ingredient;
 
     protected Measurement () {}

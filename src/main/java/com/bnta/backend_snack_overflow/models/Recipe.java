@@ -1,5 +1,7 @@
 package com.bnta.backend_snack_overflow.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class Recipe {
     private Cuisine cuisine;
 
     @OneToMany(mappedBy = "recipe")
+    @JsonIgnoreProperties({"recipes"})
     private List <Measurement> measurements;
 
     @ManyToMany
