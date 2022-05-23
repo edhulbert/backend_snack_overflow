@@ -64,8 +64,9 @@ public class Dataloader implements ApplicationRunner {
         Ingredient ingredient14 = new Ingredient("Beans");
         Ingredient ingredient15 = new Ingredient("Chilli powder");
         Ingredient ingredient16 = new Ingredient("Cheese");
+        Ingredient ingredient17 = new Ingredient("Noodles");
         ingredientRepository.saveAll(Arrays.asList(ingredient1,ingredient2,ingredient3,ingredient4,ingredient5,ingredient6,
-                ingredient7,ingredient8,ingredient9,ingredient10,ingredient11,ingredient12,ingredient13,ingredient14,ingredient15,ingredient16));
+                ingredient7,ingredient8,ingredient9,ingredient10,ingredient11,ingredient12,ingredient13,ingredient14,ingredient15,ingredient16, ingredient17));
 
 
         // new recipes
@@ -80,6 +81,7 @@ public class Dataloader implements ApplicationRunner {
 
 
         // new measurements
+        //PIZZA
         Measurement measurement1 = new Measurement(recipe1, ingredient1, "1");
         Measurement measurement2 = new Measurement(recipe1, ingredient2, "200g");
         Measurement measurement3 = new Measurement(recipe1, ingredient3, "50g");
@@ -89,25 +91,61 @@ public class Dataloader implements ApplicationRunner {
         Measurement measurement7 = new Measurement(recipe1, ingredient16, "As much as you need");
         Measurement measurement8 = new Measurement(recipe1, ingredient7, "100g");
 
+        //BURGER
+        Measurement measurement9 = new Measurement(recipe2, ingredient1, "1");
+        Measurement measurement10 = new Measurement(recipe2, ingredient2, "100g");
+        Measurement measurement11 = new Measurement(recipe2, ingredient3, "30g");
+        Measurement measurement12 = new Measurement(recipe2, ingredient4, "90ml");
+        Measurement measurement13 = new Measurement(recipe2, ingredient6, "a pinch");
+        Measurement measurement14 = new Measurement(recipe2, ingredient8, "50g");
+        Measurement measurement15 = new Measurement(recipe2, ingredient16, "2 slices");
 
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
-//        Measurement measurement6 = new Measurement(recipe1, ingredient13, "1");
+        //SPAGHETTI BOLOGNESE
+        Measurement measurement16 = new Measurement(recipe3, ingredient12, "120");
+        Measurement measurement17 = new Measurement(recipe3, ingredient13, "2 tins");
+        Measurement measurement18 = new Measurement(recipe3, ingredient8, "210g");
+        Measurement measurement19 = new Measurement(recipe3, ingredient6, "A table spoon");
+        Measurement measurement20 = new Measurement(recipe3, ingredient16, "As much as you want");
+
+        //TACOS
+        Measurement measurement21 = new Measurement(recipe4, ingredient2, "500g");
+        Measurement measurement22 = new Measurement(recipe4, ingredient10, "500ml");
+        Measurement measurement23 = new Measurement(recipe4, ingredient7, "1kg");
+        Measurement measurement24 = new Measurement(recipe4, ingredient13, "1 tin");
+        Measurement measurement25 = new Measurement(recipe4, ingredient14, "1 tin");
+        Measurement measurement26 = new Measurement(recipe4, ingredient15, "1 tsp");
+        Measurement measurement27 = new Measurement(recipe4, ingredient16, "300g");
+
+        //JOLLOF
+        Measurement measurement28 = new Measurement(recipe7, ingredient11, "300g");
+        Measurement measurement29 = new Measurement(recipe7, ingredient5, "30ml");
+        Measurement measurement30 = new Measurement(recipe7, ingredient10, "500ml");
+        Measurement measurement31 = new Measurement(recipe7, ingredient13, "1 tin");
+        Measurement measurement32 = new Measurement(recipe7, ingredient6, "a pinch");
+        Measurement measurement33 = new Measurement(recipe7, ingredient13, "1 tin");
+
+        //TIKA MASALA
+        Measurement measurement34 = new Measurement(recipe5, ingredient1, "50ml");
+        Measurement measurement35 = new Measurement(recipe5, ingredient5, "3 tablespoons");
+        Measurement measurement36 = new Measurement(recipe5, ingredient6, "a pinch");
+        Measurement measurement37 = new Measurement(recipe5, ingredient13, "1 tin");
+        Measurement measurement38 = new Measurement(recipe5, ingredient15, "As much as you need");
+        Measurement measurement39 = new Measurement(recipe5, ingredient7, "200g");
+        Measurement measurement40 = new Measurement(recipe5, ingredient10, "100ml");
+
+        //CHOW MEIN
+        Measurement measurement41 = new Measurement(recipe6, ingredient1, "3");
+        Measurement measurement42 = new Measurement(recipe6, ingredient3, "50g");
+        Measurement measurement43 = new Measurement(recipe6, ingredient6, "a pinch");
+        Measurement measurement44 = new Measurement(recipe6, ingredient13, "1/2 tin");
+        Measurement measurement45 = new Measurement(recipe6, ingredient16, "a pinch");
+        Measurement measurement46 = new Measurement(recipe6, ingredient7, "150g");
 
         measurementRepository.saveAll(Arrays.asList(measurement1,measurement2,measurement3,measurement4,measurement5,measurement6,
-                measurement7,measurement8));
+                measurement7,measurement8, measurement9, measurement10, measurement11, measurement12, measurement13, measurement14,
+                measurement15, measurement16, measurement17, measurement18, measurement19, measurement20, measurement21, measurement22,
+                measurement23, measurement24, measurement25, measurement26, measurement27, measurement28, measurement29, measurement30,
+                measurement31, measurement32, measurement33, measurement34, measurement35, measurement36, measurement37, measurement38,
+                measurement39, measurement40, measurement41, measurement42, measurement43, measurement44, measurement45, measurement46));
     }
 }
