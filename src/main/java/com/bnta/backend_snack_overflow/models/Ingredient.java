@@ -1,12 +1,21 @@
 package com.bnta.backend_snack_overflow.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "ingredients")
 public class Ingredient {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @OneToMany
     private List<Measurement> measurements;
 
     protected Ingredient () {}
