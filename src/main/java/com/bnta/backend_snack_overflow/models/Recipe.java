@@ -31,7 +31,7 @@ public class Recipe {
     @Column
     private Cuisine cuisine;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties({"recipe"})
     private List <Measurement> measurements;
 

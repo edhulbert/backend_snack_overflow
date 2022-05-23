@@ -1,6 +1,8 @@
 package com.bnta.backend_snack_overflow.controllers;
 
+import com.bnta.backend_snack_overflow.models.Measurement;
 import com.bnta.backend_snack_overflow.models.Recipe;
+import com.bnta.backend_snack_overflow.repositories.MeasurementRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
+    @Autowired
+    private MeasurementRepository measurementRepository;
 
     //INDEX
     @GetMapping
@@ -61,14 +65,12 @@ public class RecipeController {
     //DELETE
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<HttpStatus> deleteRecipe (@PathVariable Long id) {
-//        //var recipe = recipeRepository.findById(id);
-//        recipeRepository.deleteById(id);
-//        //return new ResponseEntity<>(recipe, recipe.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
-//        return new ResponseEntity<>(id, HttpStatus.OK);
 
         try {
+
             recipeRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
