@@ -29,7 +29,7 @@ public class Recipe {
     @Column
     private Cuisine cuisine;
 
-    @OneToMany
+    @OneToMany(mappedBy = "recipe")
     private List <Measurement> measurements;
 
     @ManyToMany
