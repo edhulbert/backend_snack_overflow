@@ -32,7 +32,7 @@ public class Recipe {
     private Cuisine cuisine;
 
     @OneToMany(mappedBy = "recipe")
-    @JsonIgnoreProperties({"recipes"})
+    @JsonIgnoreProperties({"recipe"})
     private List <Measurement> measurements;
 
     @ManyToMany
@@ -40,6 +40,7 @@ public class Recipe {
             joinColumns = {@JoinColumn(name = "recipe_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "equipment_id", nullable = false)}
     )
+    @JsonIgnoreProperties({"recipes"})
     private List <Equipment> equipments;
 
     protected Recipe (){}

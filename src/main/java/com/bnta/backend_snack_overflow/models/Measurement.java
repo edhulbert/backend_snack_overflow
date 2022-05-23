@@ -12,9 +12,6 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String ingredientAmount;
-
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     @JsonIgnoreProperties({"measurements"})
@@ -24,6 +21,9 @@ public class Measurement {
     @JoinColumn(name = "ingredient_id")
     @JsonIgnoreProperties({"measurements"})
     private Ingredient ingredient;
+
+    @Column
+    private String ingredientAmount;
 
     protected Measurement () {}
     public Measurement(Recipe recipe, Ingredient ingredient, String ingredientAmount) {
