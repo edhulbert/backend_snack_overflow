@@ -1,5 +1,6 @@
 package com.bnta.backend_snack_overflow.models;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

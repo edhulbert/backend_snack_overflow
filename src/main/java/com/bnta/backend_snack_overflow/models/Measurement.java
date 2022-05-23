@@ -1,10 +1,23 @@
 package com.bnta.backend_snack_overflow.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "measurements")
 public class Measurement {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Recipe recipe;
-    private Ingredient ingredient;
+
+    @Column
     private String ingredientAmount;
+
+    @ManyToOne
+    private Recipe recipe;
+
+    @ManyToOne
+    private Ingredient ingredient;
 
     protected Measurement () {}
     public Measurement(Recipe recipe, Ingredient ingredient, String ingredientAmount) {
