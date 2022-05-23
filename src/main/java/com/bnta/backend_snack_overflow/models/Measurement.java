@@ -18,6 +18,7 @@ public class Measurement {
     private Recipe recipe;
 
     @ManyToOne
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
     protected Measurement () {}

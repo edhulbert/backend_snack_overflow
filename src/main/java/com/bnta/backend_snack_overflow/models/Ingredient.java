@@ -15,7 +15,7 @@ public class Ingredient {
     @Column
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "ingredient")
     private List<Measurement> measurements;
 
     protected Ingredient () {}
