@@ -1,6 +1,7 @@
 package com.bnta.backend_snack_overflow;
 
 import com.bnta.backend_snack_overflow.models.Recipe;
+import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,23 @@ class BackendSnackOverflowApplicationTests {
 
 @Autowired
 private RecipeRepository recipeRepository;
+
+@Autowired
+private IngredientRepository ingredientRepository;
+
+
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
+	public void canFindIngredientsByName(){
+		assertThat(ingredientRepository.findIngredientsByNameIsContainingIgnoreCase("B").size()).isEqualTo(4);
+	}
+
+	@Test
 	public void canFindRecipeByName (){
-		assertThat(recipeRepository.findRecipeByName("Tacos").size()).isEqualTo(1);
+		assertThat(recipeRepository.findRecipeByNameIsContainingIgnoreCase("Tacos").size()).isEqualTo(1);
 	}
 
 

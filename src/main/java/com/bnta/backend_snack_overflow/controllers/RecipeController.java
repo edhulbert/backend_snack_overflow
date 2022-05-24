@@ -26,9 +26,11 @@ public class RecipeController {
     @GetMapping
     public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "name") String name) {
 
-        if (name != null){ return new ResponseEntity<>(recipeRepository.findRecipeByName(name), HttpStatus.OK);}
+        if (name != null){ return new ResponseEntity<>(recipeRepository.findRecipeByNameIsContainingIgnoreCase(name), HttpStatus.OK);}
         return new ResponseEntity<>(recipeRepository.findAll(), HttpStatus.OK);
     }
+
+
 
     //SHOW
     @GetMapping("/{id}")

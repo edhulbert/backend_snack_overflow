@@ -1,6 +1,7 @@
 package com.bnta.backend_snack_overflow.controllers;
 
 import com.bnta.backend_snack_overflow.models.Ingredient;
+import com.bnta.backend_snack_overflow.models.Recipe;
 import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,12 @@ public class IngredientController {
     private IngredientRepository ingredientRepository;
 
     @GetMapping
-    public ResponseEntity<List<Ingredient>> getAllIngredients() {
+    public ResponseEntity<List<Ingredient>> getAllIngredientAndFilters(@RequestParam(required = false, name = "name") String name) {
+
+        if (name != null){ return new ResponseEntity<>(ingredientRepository.findIngredientsByNameIsContainingIgnoreCase(name), HttpStatus.OK);}
         return new ResponseEntity<>(ingredientRepository.findAll(), HttpStatus.OK);
     }
+
 
     //SHOW
     @GetMapping("/{id}")

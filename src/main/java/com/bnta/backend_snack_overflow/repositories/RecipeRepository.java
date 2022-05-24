@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<Recipe> findRecipeByName(String name);
+   // http://localhost:8084/recipes?name=Tacos
+    List<Recipe> findRecipeByNameIsContainingIgnoreCase(String name);
 }
+
