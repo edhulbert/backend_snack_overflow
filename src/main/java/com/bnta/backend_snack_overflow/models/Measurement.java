@@ -59,7 +59,11 @@ public class Measurement {
     public void setIngredientAmount(String ingredientAmount) {
         this.ingredientAmount = ingredientAmount;
     }
-
+    @PreRemove
+    private void removeMeasurementFromRecipeAndIngredient() {
+        recipe.getMeasurements().remove(this);
+        ingredient.getMeasurements().remove(this);
+    }
     @Override
     public String toString() {
         return "Measurement{" +
