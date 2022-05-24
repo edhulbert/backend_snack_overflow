@@ -24,9 +24,19 @@ public class RecipeController {
 
     //INDEX
     @GetMapping
-    public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "name") String name) {
+    public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "recipeName") String recipeName,
+                                                                @RequestParam(required = false, name = "ingredientName") String ingredientName) {
 
-        if (name != null){ return new ResponseEntity<>(recipeRepository.findRecipeByNameIsContainingIgnoreCase(name), HttpStatus.OK);}
+        if (recipeName != null){
+            return new ResponseEntity<>(recipeRepository.findRecipeByNameIsContainingIgnoreCase(recipeName), HttpStatus.OK);
+
+        } else if(ingredientName != null ){
+            return new ResponseEntity<>(recipeRepository.findRecipeByMeasurements_Ingredient_NameIgnoreCase(ingredientName), HttpStatus.OK);
+        }
+
+
+
+
         return new ResponseEntity<>(recipeRepository.findAll(), HttpStatus.OK);
     }
 

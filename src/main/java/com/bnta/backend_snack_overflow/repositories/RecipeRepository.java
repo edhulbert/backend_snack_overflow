@@ -11,6 +11,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
    // http://localhost:8084/recipes?name=Tacos
     List<Recipe> findRecipeByNameIsContainingIgnoreCase(String name);
 
-    List<Recipe> findRecipeByMeasurements_Ingredient_Name(String name);
+    List<Recipe> findRecipeByMeasurements_Ingredient_NameIgnoreCase(String name);
 }
 
