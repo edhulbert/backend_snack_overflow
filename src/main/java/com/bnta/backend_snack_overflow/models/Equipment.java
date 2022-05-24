@@ -50,11 +50,17 @@ public class Equipment {
         this.recipes = recipes;
     }
 
+
     public void removeRecipe(Recipe recipe){
         this.recipes.remove(recipe);
         recipe.getEquipments().remove(this);
     }
-
+    @PreRemove
+    private void removeEquipmentsFromRecipes() {
+        for (Recipe recipe:recipes){
+            recipe.getEquipments().remove(this);
+        }
+    }
 
 
 

@@ -1,12 +1,14 @@
 package com.bnta.backend_snack_overflow.controllers;
 
 import com.bnta.backend_snack_overflow.models.Equipment;
+import com.bnta.backend_snack_overflow.models.Recipe;
 import com.bnta.backend_snack_overflow.repositories.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +58,15 @@ public class EquipmentController {
     public ResponseEntity<HttpStatus> deleteEquipment (@PathVariable Long id) {
 
         try {
-            equipmentRepository.findById(id);
+//            Recipe a = EntityManager.find(Recipe.class, id);
+//            for (Equipment b : a.getEquipments()) {
+//                if (b.getRecipes().size() == 1) {
+//                    EntityManager.remove(b);
+//                } else {
+//                    b.getRecipes().remove(a);
+//                }
+//            }
+//            EntityManager.remove(a);
             equipmentRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
