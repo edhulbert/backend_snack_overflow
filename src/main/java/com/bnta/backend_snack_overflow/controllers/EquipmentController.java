@@ -56,10 +56,9 @@ public class EquipmentController {
     public ResponseEntity<HttpStatus> deleteEquipment (@PathVariable Long id) {
 
         try {
-
+            equipmentRepository.findById(id);
             equipmentRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

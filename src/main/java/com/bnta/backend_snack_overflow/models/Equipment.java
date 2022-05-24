@@ -17,7 +17,7 @@ public class Equipment {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "equipments", cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "equipments")
     @JsonIgnoreProperties({"equipments","measurements"})
     private List <Recipe> recipes;
 
@@ -49,6 +49,16 @@ public class Equipment {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
+
+    public void removeRecipe(Recipe recipe){
+        this.recipes.remove(recipe);
+        recipe.getEquipments().remove(this);
+    }
+
+
+
+
+
 
     @Override
     public String toString() {
