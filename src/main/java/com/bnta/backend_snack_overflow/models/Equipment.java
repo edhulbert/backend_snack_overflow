@@ -17,8 +17,8 @@ public class Equipment {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "equipments")
-    @JsonIgnoreProperties({"equipments"})
+    @ManyToMany(mappedBy = "equipments", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"equipments","measurements"})
     private List <Recipe> recipes;
 
     protected Equipment () {}
