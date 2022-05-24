@@ -1,5 +1,6 @@
 package com.bnta.backend_snack_overflow;
 
+import com.bnta.backend_snack_overflow.models.Ingredient;
 import com.bnta.backend_snack_overflow.models.Recipe;
 import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
@@ -33,6 +34,11 @@ private IngredientRepository ingredientRepository;
 	@Test
 	public void canFindRecipeByName (){
 		assertThat(recipeRepository.findRecipeByNameIsContainingIgnoreCase("Tacos").size()).isEqualTo(1);
+	}
+
+	@Test
+	public void canFindRecipeByIngredient(){
+		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_Name("Egg").size()).isEqualTo(4);
 	}
 
 
