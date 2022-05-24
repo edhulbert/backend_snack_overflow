@@ -61,11 +61,6 @@ public class Equipment {
             recipe.getEquipments().remove(this);
         }
     }
-
-
-
-
-
     @Override
     public String toString() {
         return "Equipment{" +

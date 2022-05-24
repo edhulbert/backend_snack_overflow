@@ -17,8 +17,8 @@ public class Ingredient {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "ingredient")
-    @JsonIgnoreProperties({"ingredient"})
+    @OneToMany(mappedBy = "ingredient",cascade=CascadeType.REMOVE)
+    @JsonIgnoreProperties({"ingredient","equipments"})
     private List<Measurement> measurements;
 
     protected Ingredient () {}
@@ -47,6 +47,12 @@ public class Ingredient {
     public void setMeasurements(List<Measurement> measurements) {
         this.measurements = measurements;
     }
+//    @PreRemove
+//    private void removeIngredientsFromRecipes() {
+//        for (Recipe recipe:recipes){
+//            recipe.getIngredients().remove(this);
+//        }
+//    }
 
     @Override
     public String toString() {

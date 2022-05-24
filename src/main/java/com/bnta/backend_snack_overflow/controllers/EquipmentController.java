@@ -58,15 +58,6 @@ public class EquipmentController {
     public ResponseEntity<HttpStatus> deleteEquipment (@PathVariable Long id) {
 
         try {
-//            Recipe a = EntityManager.find(Recipe.class, id);
-//            for (Equipment b : a.getEquipments()) {
-//                if (b.getRecipes().size() == 1) {
-//                    EntityManager.remove(b);
-//                } else {
-//                    b.getRecipes().remove(a);
-//                }
-//            }
-//            EntityManager.remove(a);
             equipmentRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {

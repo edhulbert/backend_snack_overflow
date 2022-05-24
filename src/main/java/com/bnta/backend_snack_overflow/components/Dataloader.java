@@ -140,12 +140,13 @@ public class Dataloader implements ApplicationRunner {
         Measurement measurement44 = new Measurement(recipe6, ingredient13, "1/2 tin");
         Measurement measurement45 = new Measurement(recipe6, ingredient16, "a pinch");
         Measurement measurement46 = new Measurement(recipe6, ingredient7, "150g");
+        Measurement measurement47 = new Measurement(recipe6, ingredient17, "250g");
 
         measurementRepository.saveAll(Arrays.asList(measurement1,measurement2,measurement3,measurement4,measurement5,measurement6,
                 measurement7,measurement8, measurement9, measurement10, measurement11, measurement12, measurement13, measurement14,
                 measurement15, measurement16, measurement17, measurement18, measurement19, measurement20, measurement21, measurement22,
                 measurement23, measurement24, measurement25, measurement26, measurement27, measurement28, measurement29, measurement30,
                 measurement31, measurement32, measurement33, measurement34, measurement35, measurement36, measurement37, measurement38,
-                measurement39, measurement40, measurement41, measurement42, measurement43, measurement44, measurement45, measurement46));
+                measurement39, measurement40, measurement41, measurement42, measurement43, measurement44, measurement45, measurement46,measurement47));
     }
 }
