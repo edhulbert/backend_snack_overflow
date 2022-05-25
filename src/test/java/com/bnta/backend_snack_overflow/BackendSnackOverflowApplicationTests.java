@@ -43,15 +43,19 @@ private IngredientRepository ingredientRepository;
 		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_NameIgnoreCase("Egg").size()).isEqualTo(4);
 	}
 
-//	@Test
-//	public void canOrderByPrepTime() {
-////		assertTrue(Arrays.equals(recipeRepository.findTotalTime(), recipeRepository.findAll()));
-//		assertThat(recipeRepository.findByOrderByPrepTimeAscIdAsc().get(0)).isEqualTo(recipeRepository.findById(1L).get());
-//	}
-
 	@Test
 	public void canOrderByPrepTimeAndCookTime (){
-		assertThat(recipeRepository.findByOrderByPrepTimeAndCookTime().get(0)).isEqualTo(recipeRepository.findById(1L).get());
+		assertThat(recipeRepository.findByOrderByPrepTimeAndCookTime().get(6)).isEqualTo(recipeRepository.findById(3L).get());
+	}
+
+	@Test
+	public void canOrderByPrepTime() {
+		assertThat(recipeRepository.findByOrderByPrepTimeAscIdAsc().get(0)).isEqualTo(recipeRepository.findById(1L).get());
+	}
+
+	@Test
+	public void canOrderByCookTime() {
+		assertThat(recipeRepository.findByOrderByCookTimeAscIdAsc().get(0)).isEqualTo(recipeRepository.findById(1L).get());
 	}
 
 

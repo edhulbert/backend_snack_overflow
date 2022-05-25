@@ -15,9 +15,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     List<Recipe> findRecipeByMeasurements_Ingredient_NameIgnoreCase(String name);
 
-//    @Query(value = "SELECT recipe FROM Recipe recipe")
+    @Query(value = "SELECT * FROM recipes ORDER BY (prep_time + cook_time)", nativeQuery = true)
     List<Recipe> findByOrderByPrepTimeAndCookTime();
     List<Recipe> findByOrderByPrepTimeAscIdAsc();
+    List<Recipe> findByOrderByCookTimeAscIdAsc();
 
 }
 
