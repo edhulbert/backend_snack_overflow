@@ -30,7 +30,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
          "INNER JOIN ingredients ON measurements.ingredient_id = ingredients.id WHERE ingredients.name ILIKE ?1)", nativeQuery = true)
     List<Recipe> findByIngredientsNotIncluding(String dietaryRestriction);
 
-
-
+    List<Recipe> findRecipeByMeasurements_Ingredient_NameInIgnoreCase(List<String> ingredients);
 }
 

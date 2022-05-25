@@ -27,7 +27,8 @@ public class RecipeController {
     public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "recipeName") String recipeName,
                                                                 @RequestParam(required = false, name = "ingredientName") String ingredientName,
                                                                 @RequestParam(required = false, name = "sortByTotalTime") Boolean sortByTotalTime,
-                                                                @RequestParam(required = false, name = "dietaryRestriction") String dietaryRestriction) {
+                                                                @RequestParam(required = false, name = "dietaryRestriction") String dietaryRestriction,
+                                                                @RequestParam(required = false, name = "ingredients") List<String> ingredientList ) {
 
         if (ingredientName !=null && sortByTotalTime != null) {
             return new ResponseEntity<>(recipeRepository.findByIngredientAndSortByTotalTime(ingredientName), HttpStatus.OK);
@@ -40,6 +41,8 @@ public class RecipeController {
             if(sortByTotalTime == true) return new ResponseEntity<>(recipeRepository.findByOrderByPrepTimeAndCookTime(), HttpStatus.OK);
         } else if (dietaryRestriction !=null){
             return new ResponseEntity<>(recipeRepository.findByIngredientsNotIncluding(dietaryRestriction),HttpStatus.OK);
+        } else if (ingredientList !=null) {
+            return new ResponseEntity<>(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(ingredientList), HttpStatus.OK);
         }
 
 

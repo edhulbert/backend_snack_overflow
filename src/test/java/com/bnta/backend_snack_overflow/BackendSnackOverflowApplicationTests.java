@@ -67,4 +67,9 @@ private IngredientRepository ingredientRepository;
 	public void canFindByIngredientNotIncluding(){
 		assertThat(recipeRepository.findByIngredientsNotIncluding("chicken").get(0)).isEqualTo(recipeRepository.findById(2L).get());
 	}
+
+	@Test
+	public void canFindByMultipleIngredients(){
+		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(Arrays.asList("Chicken", "Egg")).get(2)).isEqualTo(recipeRepository.findById(1L).get());
+	}
 }
