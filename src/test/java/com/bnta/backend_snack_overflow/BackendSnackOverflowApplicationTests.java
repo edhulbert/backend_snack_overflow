@@ -58,5 +58,10 @@ private IngredientRepository ingredientRepository;
 		assertThat(recipeRepository.findByOrderByCookTimeAscIdAsc().get(0)).isEqualTo(recipeRepository.findById(1L).get());
 	}
 
+	@Test
+	public void canFindByIngredientAndSortByTotalTime(){
+		assertThat(recipeRepository.findByIngredientAndSortByTotalTime("noodles").get(0)).isEqualTo(recipeRepository.findById(6L).get());
+	}
+
 
 }

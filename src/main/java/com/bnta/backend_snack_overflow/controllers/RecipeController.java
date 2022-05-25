@@ -28,7 +28,9 @@ public class RecipeController {
                                                                 @RequestParam(required = false, name = "ingredientName") String ingredientName,
                                                                 @RequestParam(required = false, name = "sortByTotalTime") Boolean sortByTotalTime) {
 
-        if (recipeName != null){
+        if (ingredientName !=null && sortByTotalTime != null) {
+            return new ResponseEntity<>(recipeRepository.findByIngredientAndSortByTotalTime(ingredientName), HttpStatus.OK);
+        } else if (recipeName != null){
             return new ResponseEntity<>(recipeRepository.findRecipeByNameIsContainingIgnoreCase(recipeName), HttpStatus.OK);
 
         } else if(ingredientName != null ){

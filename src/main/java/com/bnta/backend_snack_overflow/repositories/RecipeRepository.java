@@ -5,6 +5,7 @@ import com.bnta.backend_snack_overflow.models.Recipe;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -19,6 +20,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findByOrderByPrepTimeAndCookTime();
     List<Recipe> findByOrderByPrepTimeAscIdAsc();
     List<Recipe> findByOrderByCookTimeAscIdAsc();
+    @Query(value = "SELECT * FROM recipes INNER JOIN measurements ON recipes.id = measurements.recipe_id INNER JOIN ingredients " +
+            "ON measurements.ingredient_id = ingredients.id WHERE ingredients.name ILIKE CONCAT('%',?1,'%') ORDER BY (prep_time + cook_time)",
+            nativeQuery = true)
+    List<Recipe> findByIngredientAndSortByTotalTime(String ingredient);
 
 }
 
