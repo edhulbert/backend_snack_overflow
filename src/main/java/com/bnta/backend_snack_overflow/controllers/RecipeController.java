@@ -1,6 +1,5 @@
 package com.bnta.backend_snack_overflow.controllers;
 
-import com.bnta.backend_snack_overflow.models.Measurement;
 import com.bnta.backend_snack_overflow.models.Recipe;
 import com.bnta.backend_snack_overflow.repositories.MeasurementRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
@@ -9,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Id;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,33 +22,30 @@ public class RecipeController {
 
     //INDEX
     @GetMapping
-    public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "recipeName") String recipeName,
-                                                                @RequestParam(required = false, name = "ingredientName") String ingredientName,
-                                                                @RequestParam(required = false, name = "sortByTotalTime") Boolean sortByTotalTime,
-                                                                @RequestParam(required = false, name = "dietaryRestriction") String dietaryRestriction,
-                                                                @RequestParam(required = false, name = "ingredients") List<String> ingredientList ) {
+    public ResponseEntity<List<Recipe>> getAllRecipesAndFilters(@RequestParam(required = false, name = "recipe-name") String recipeName,
+                                                                @RequestParam(required = false, name = "ingredient") String ingredientName,
+                                                                @RequestParam(required = false, name = "sort-by-total-time") Boolean sortByTotalTime,
+                                                                @RequestParam(required = false, name = "dietary-restriction") String dietaryRestriction,
+                                                                @RequestParam(required = false, name = "ingredients") List<String> ingredientList) {
 
-        if (ingredientName !=null && sortByTotalTime != null) {
+        if (ingredientName != null && sortByTotalTime != null) {
             return new ResponseEntity<>(recipeRepository.findByIngredientAndSortByTotalTime(ingredientName), HttpStatus.OK);
-        } else if (recipeName != null){
+        } else if (recipeName != null) {
             return new ResponseEntity<>(recipeRepository.findRecipeByNameIsContainingIgnoreCase(recipeName), HttpStatus.OK);
-
-        } else if(ingredientName != null ){
+        } else if (ingredientName != null) {
             return new ResponseEntity<>(recipeRepository.findRecipeByMeasurements_Ingredient_NameIgnoreCase(ingredientName), HttpStatus.OK);
-        } else if (sortByTotalTime != null ){
-            if(sortByTotalTime == true) return new ResponseEntity<>(recipeRepository.findByOrderByPrepTimeAndCookTime(), HttpStatus.OK);
-        } else if (dietaryRestriction !=null){
-            return new ResponseEntity<>(recipeRepository.findByIngredientsNotIncluding(dietaryRestriction),HttpStatus.OK);
-        } else if (ingredientList !=null) {
+        } else if (sortByTotalTime != null) {
+            if (sortByTotalTime == true)
+                return new ResponseEntity<>(recipeRepository.findByOrderByPrepTimeAndCookTime(), HttpStatus.OK);
+        } else if (dietaryRestriction != null) {
+            return new ResponseEntity<>(recipeRepository.findByIngredientsNotIncluding(dietaryRestriction), HttpStatus.OK);
+        } else if (ingredientList != null) {
             return new ResponseEntity<>(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(ingredientList), HttpStatus.OK);
         }
 
 
-
-
         return new ResponseEntity<>(recipeRepository.findAll(), HttpStatus.OK);
     }
-
 
 
     //SHOW
@@ -89,7 +84,7 @@ public class RecipeController {
 
     //DELETE
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<HttpStatus> deleteRecipe (@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> deleteRecipe(@PathVariable Long id) {
 
         try {
 

@@ -2,14 +2,12 @@ package com.bnta.backend_snack_overflow;
 
 import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -70,6 +68,7 @@ private IngredientRepository ingredientRepository;
 
 	@Test
 	public void canFindByMultipleIngredients(){
-		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(Arrays.asList("Chicken", "Egg")).get(2)).isEqualTo(recipeRepository.findById(1L).get());
+		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(Arrays.asList("Chicken")).get(1)).isEqualTo(recipeRepository.findById(1L).get());
 	}
+
 }

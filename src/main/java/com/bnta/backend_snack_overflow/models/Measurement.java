@@ -19,13 +19,15 @@ public class Measurement {
 
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
-    @JsonIgnoreProperties({"measurements","equipments"})
+    @JsonIgnoreProperties({"measurements", "equipments"})
     private Ingredient ingredient;
 
     @Column
     private String ingredientAmount;
 
-    protected Measurement () {}
+    protected Measurement() {
+    }
+
     public Measurement(Recipe recipe, Ingredient ingredient, String ingredientAmount) {
         this.recipe = recipe;
         this.ingredient = ingredient;
@@ -59,11 +61,13 @@ public class Measurement {
     public void setIngredientAmount(String ingredientAmount) {
         this.ingredientAmount = ingredientAmount;
     }
+
     @PreRemove
     private void removeMeasurementFromRecipeAndIngredient() {
         recipe.getMeasurements().remove(this);
         ingredient.getMeasurements().remove(this);
     }
+
     @Override
     public String toString() {
         return "Measurement{" +

@@ -18,10 +18,11 @@ public class Equipment {
     private String name;
 
     @ManyToMany(mappedBy = "equipments")
-    @JsonIgnoreProperties({"equipments","measurements"})
-    private List <Recipe> recipes;
+    @JsonIgnoreProperties({"equipments", "measurements"})
+    private List<Recipe> recipes;
 
-    protected Equipment () {}
+    protected Equipment() {
+    }
 
     public Equipment(String name) {
 
@@ -51,16 +52,18 @@ public class Equipment {
     }
 
 
-    public void removeRecipe(Recipe recipe){
+    public void removeRecipe(Recipe recipe) {
         this.recipes.remove(recipe);
         recipe.getEquipments().remove(this);
     }
+
     @PreRemove
     private void removeEquipmentsFromRecipes() {
-        for (Recipe recipe:recipes){
+        for (Recipe recipe : recipes) {
             recipe.getEquipments().remove(this);
         }
     }
+
     @Override
     public String toString() {
         return "Equipment{" +

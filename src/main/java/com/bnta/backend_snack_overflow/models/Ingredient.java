@@ -17,11 +17,12 @@ public class Ingredient {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "ingredient",cascade=CascadeType.REMOVE)
-    @JsonIgnoreProperties({"ingredient","equipments"})
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"ingredient", "equipments"})
     private List<Measurement> measurements;
 
-    protected Ingredient () {}
+    protected Ingredient() {
+    }
 
     public Ingredient(String name) {
         this.name = name;
