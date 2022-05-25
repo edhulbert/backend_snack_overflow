@@ -68,8 +68,8 @@ public class Measurement {
     public String toString() {
         return "Measurement{" +
                 "id=" + id +
-                ", recipe=" + recipe +
-                ", ingredient=" + ingredient +
+//                ", recipe=" + recipe +
+//                ", ingredient=" + ingredient +
                 ", ingredientAmount='" + ingredientAmount + '\'' +
                 '}';
     }

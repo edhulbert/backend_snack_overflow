@@ -66,7 +66,7 @@ public class Equipment {
         return "Equipment{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", recipes=" + recipes +
+//                ", recipes=" + recipes +
                 '}';
     }
 }

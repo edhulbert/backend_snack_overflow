@@ -124,8 +124,8 @@ public class Recipe {
                 ", cookTime=" + cookTime +
                 ", portionSize=" + portionSize +
                 ", cuisine=" + cuisine +
-                ", measurements=" + measurements +
-                ", equipments=" + equipments +
+//                ", measurements=" + measurements +
+//                ", equipments=" + equipments +
                 '}';
     }
 }
