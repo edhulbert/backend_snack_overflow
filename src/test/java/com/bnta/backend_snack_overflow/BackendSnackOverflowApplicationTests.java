@@ -63,5 +63,8 @@ private IngredientRepository ingredientRepository;
 		assertThat(recipeRepository.findByIngredientAndSortByTotalTime("noodles").get(0)).isEqualTo(recipeRepository.findById(6L).get());
 	}
 
-
+	@Test
+	public void canFindByIngredientNotIncluding(){
+		assertThat(recipeRepository.findByIngredientsNotIncluding("chicken").get(0)).isEqualTo(recipeRepository.findById(2L).get());
+	}
 }

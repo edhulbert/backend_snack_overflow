@@ -24,6 +24,13 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
             "ON measurements.ingredient_id = ingredients.id WHERE ingredients.name ILIKE CONCAT('%',?1,'%') ORDER BY (prep_time + cook_time)",
             nativeQuery = true)
     List<Recipe> findByIngredientAndSortByTotalTime(String ingredient);
+    @Query(value = "SELECT DISTINCT recipes.* FROM recipes INNER JOIN measurements ON recipes.id = measurements.recipe_id " +
+         "INNER JOIN ingredients ON measurements.ingredient_id = ingredients.id WHERE recipes.id NOT IN " +
+         "( SELECT recipes.id FROM recipes INNER JOIN measurements ON recipes.id = measurements.recipe_id " +
+         "INNER JOIN ingredients ON measurements.ingredient_id = ingredients.id WHERE ingredients.name ILIKE ?1)", nativeQuery = true)
+    List<Recipe> findByIngredientsNotIncluding(String dietaryRestriction);
+
+
 
 }
 

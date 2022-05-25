@@ -49,7 +49,7 @@ public class Dataloader implements ApplicationRunner {
 
         // new ingredients
         Ingredient ingredient1 = new Ingredient("Egg");
-        Ingredient ingredient2 = new Ingredient("Flour");
+        Ingredient ingredient2 = new Ingredient("Rice Flour");
         Ingredient ingredient3 = new Ingredient("Butter");
         Ingredient ingredient4 = new Ingredient("Milk");
         Ingredient ingredient5 = new Ingredient("Oil");
