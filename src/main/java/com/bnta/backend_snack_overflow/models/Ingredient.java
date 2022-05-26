@@ -21,6 +21,10 @@ public class Ingredient {
     @JsonIgnoreProperties({"ingredient", "equipments"})
     private List<Measurement> measurements;
 
+    @ManyToMany(mappedBy = "user")
+    @JsonIgnoreProperties({"ingredients"})
+    private List<User> users;
+
     protected Ingredient() {
     }
 
@@ -48,7 +52,16 @@ public class Ingredient {
     public void setMeasurements(List<Measurement> measurements) {
         this.measurements = measurements;
     }
-//    @PreRemove
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    //    @PreRemove
 //    private void removeIngredientsFromRecipes() {
 //        for (Recipe recipe:recipes){
 //            recipe.getIngredients().remove(this);

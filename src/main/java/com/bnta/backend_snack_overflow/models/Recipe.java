@@ -43,6 +43,10 @@ public class Recipe {
     @JsonIgnoreProperties({"recipes"})
     private List <Equipment> equipments;
 
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnoreProperties({"recipes"})
+    private List<User> users;
+
     protected Recipe (){}
 
     public Recipe(String name, int prepTime, int cookTime, int portionSize, Cuisine cuisine, List<Equipment> equipments) {
@@ -113,6 +117,14 @@ public class Recipe {
 
     public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override
