@@ -5,7 +5,7 @@
 intro to what the api does, only a few lines
 
 class diagram 
-<img src="./Backend Class Diagram.png" alt="class diagram" />
+<img src="./Backend Class Diagram.png" alt="class diagram" width="200"/>
 
 entity relationship diagram
 <img src="./Backend Entity Relationship Diagram.png" alt="entity relationship diagram" />
