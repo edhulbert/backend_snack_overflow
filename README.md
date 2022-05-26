@@ -105,6 +105,16 @@ A user's cupboard is a list of all ingredients the user has at their disposal. I
 
 ----------------
 
+## Dependancies
+- Spring Web
+- SpringBoot Devtools
+- Spring Data JPA
+- H2 Database
+- JUnit Jupiter
+- AssertJ Core
+
+----------------
+
 ## Collaborators
 - Adan Abdillahi
 - Fiyin Ayodele
