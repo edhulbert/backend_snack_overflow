@@ -85,6 +85,7 @@ The recipe model contains filters and a sort that allow the user to narrow their
 
 - FILTER
   - /recipes?recipe-name={name} : recipe name includes (but not limited to) case-insensitive string
+  - /recipes?ingredient={ingredient} : recipe includes {ingredient}, case-insensitive
   - /recipes?ingredients={ingredient1,ingredient2,...} : recipe includes AT LEAST ONE of user-input list of ingredients
   - /recipes?dietary-restriction={ingredient} : recipe does not include user-input ingredient
  
