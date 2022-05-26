@@ -2,9 +2,26 @@
 
 
 ## Description
-intro to what the api does, only a few lines
 
+This project is a Recipe API containing recipes for meals from numerous cuisines. Each recipe contains ingredients, as well as the measurements, and also the equipment required to make that dish. 
 
+The program allows the user to add a list of ingredients they have available to them, stored in their "cupboard", and then filter the recipes to find dishes that can be made with some, or all of the ingredients they have. 
+
+The user is also able to filter recipes based on ingredients they do not want to see (i.e. dietary restrictions), and also sort the recipes based on the total time it takes to prepare and cook. 
+
+Below is a description of all models available, along with the 
+
+#### Users
+A user object contains a unique id, a username, a password, a list of favourite recipes, and a list of ingredients - their "cupboard". A specific user's cupboard and favourite recipes can be accessed directly with a GET request, described in the "How to use the API" section of this ReadMe.
+
+#### Recipes
+Recipes contain an id, a name, preparation time, cooking time,
+#### Ingredients
+
+#### Measurements
+
+#### Equipment
+ Each equipment object has a unique id, a name, and a list of recipes that it is used in. This relationship with recipes is many-to-many. Equipment can be created, updated and deleted, without affecting the recipes that it is attached to.
 ### Class Diagram
 <img src="./Backend Class Diagram.png" alt="class diagram" width="80%"/> 
 
@@ -87,4 +104,5 @@ A user's cupboard is a list of all ingredients the user has at their disposal. I
 
 
 ## License
+
 
