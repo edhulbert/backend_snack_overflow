@@ -43,7 +43,7 @@ public class Recipe {
     @JsonIgnoreProperties({"recipes"})
     private List <Equipment> equipments;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "faveRecipes")
     @JsonIgnoreProperties({"recipes"})
     private List<User> users;
 

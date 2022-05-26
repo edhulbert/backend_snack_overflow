@@ -25,9 +25,9 @@ public class User {
     private List<Recipe> faveRecipes;
 
     @ManyToMany
-    @JoinTable(name = "user_cupboard",
+    @JoinTable(name = "users_ingredients",
                 joinColumns = {@JoinColumn(name = "user_id",nullable = false)},
-                inverseJoinColumns = {@JoinColumn(name = "ingredient_id")})
+                inverseJoinColumns = {@JoinColumn(name = "ingredient_id",nullable = false)})
     private List<Ingredient> cupboard;
 
     public User(String username, String password) {
@@ -36,6 +36,8 @@ public class User {
         this.faveRecipes = new ArrayList<>();
         this.cupboard = new ArrayList<>();
     }
+
+    protected User() {}
 
     public Long getId() {
         return id;
@@ -71,6 +73,22 @@ public class User {
 
     public void setCupboard(List<Ingredient> cupboard) {
         this.cupboard = cupboard;
+    }
+
+    public void addRecipeToFavourites(Recipe recipe) {
+        this.faveRecipes.add(recipe);
+    }
+
+    public void removeRecipeFromFavourites(Recipe recipe) {
+        this.faveRecipes.remove(recipe);
+    }
+
+    public void addIngredientToCupboard(Ingredient ingredient) {
+        this.cupboard.add(ingredient);
+    }
+
+    public void removeIngredientFromCupboard(Ingredient ingredient) {
+        this.cupboard.remove(ingredient);
     }
 
     @PreRemove

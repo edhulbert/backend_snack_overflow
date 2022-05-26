@@ -149,6 +149,11 @@ public class Dataloader implements ApplicationRunner {
                 measurement39, measurement40, measurement41, measurement42, measurement43, measurement44, measurement45, measurement46));
 
         User user1 = new User("mattyp","123");
+        user1.addRecipeToFavourites(recipe6);
+        user1.addRecipeToFavourites(recipe4);
+        user1.addIngredientToCupboard(ingredient1);
+        user1.addIngredientToCupboard(ingredient6);
+        user1.addIngredientToCupboard(ingredient14);
         userRepository.save(user1);
     }
 }
