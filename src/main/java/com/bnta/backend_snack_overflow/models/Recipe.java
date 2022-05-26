@@ -44,7 +44,7 @@ public class Recipe {
     private List <Equipment> equipments;
 
     @ManyToMany(mappedBy = "faveRecipes")
-    @JsonIgnoreProperties({"recipes"})
+    @JsonIgnoreProperties({"recipes", "users", "measurements", "faveRecipes"})
     private List<User> users;
 
     protected Recipe (){}

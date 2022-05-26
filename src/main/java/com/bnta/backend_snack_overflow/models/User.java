@@ -1,5 +1,10 @@
 package com.bnta.backend_snack_overflow.models;
 
+
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +27,14 @@ public class User {
     @JoinTable(name = "users_recipes",
                 joinColumns = {@JoinColumn(name = "user_id",nullable = false)},
                 inverseJoinColumns = {@JoinColumn(name = "recipe_id", nullable = false)})
+    @JsonIgnoreProperties({"users"})
     private List<Recipe> faveRecipes;
 
     @ManyToMany
     @JoinTable(name = "users_ingredients",
                 joinColumns = {@JoinColumn(name = "user_id",nullable = false)},
                 inverseJoinColumns = {@JoinColumn(name = "ingredient_id",nullable = false)})
+    @JsonIgnoreProperties({"users", "measurements", "faveRecipes", "cupboard"})
     private List<Ingredient> cupboard;
 
     public User(String username, String password) {

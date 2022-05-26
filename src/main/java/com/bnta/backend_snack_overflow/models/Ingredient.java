@@ -22,7 +22,8 @@ public class Ingredient {
     private List<Measurement> measurements;
 
     @ManyToMany(mappedBy = "cupboard")
-    @JsonIgnoreProperties({"ingredients"})
+    @JsonIgnoreProperties({"ingredients", "users", "cupboard", "faveRecipes"})
+    //@JsonIgnoreProperties({"ingredients, users, measurements"})
     private List<User> users;
 
     protected Ingredient() {

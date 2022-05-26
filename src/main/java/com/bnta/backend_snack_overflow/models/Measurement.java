@@ -14,12 +14,12 @@ public class Measurement {
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
-    @JsonIgnoreProperties({"measurements", "equipments"})
+    @JsonIgnoreProperties({"measurements", "equipments", "users"})
     private Recipe recipe;
 
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
-    @JsonIgnoreProperties({"measurements", "equipments"})
+    @JsonIgnoreProperties({"measurements", "equipments", "users"})
     private Ingredient ingredient;
 
     @Column
