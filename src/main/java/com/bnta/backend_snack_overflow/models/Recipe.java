@@ -31,7 +31,7 @@ public class Recipe {
     @Column
     private Cuisine cuisine;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "recipe", orphanRemoval = true)
     @JsonIgnoreProperties({"recipe"})
     private List <Measurement> measurements;
 
@@ -125,6 +125,17 @@ public class Recipe {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    @PreRemove
+    private void removeRecipesFromEquipments() {
+        for (Equipment equipment : equipments) {
+            equipment.getRecipes().remove(this);
+        }
+        for (User user : users) {
+            user.getFaveRecipes().remove(this);
+        }
+
     }
 
     @Override
