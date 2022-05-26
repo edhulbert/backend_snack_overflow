@@ -36,6 +36,7 @@ There is an implied many-to-many relationship between recipes and ingredients, b
 ### Entity Relationship Diagram
 <img src="./Backend Entity Relationship Diagram.png" alt="entity relationship diagram" width="80%"/>
 
+-------------
 
 ## Tech Stack
 
@@ -102,7 +103,7 @@ A user's favourite recipes can be accessed via GET request `localhost:8080/users
 
 A user's cupboard is a list of all ingredients the user has at their disposal. It can be accessed via GET request `localhost:8080/users/{id}/cupboard`.  The response body contains each ingredient in the cupboard, along with all recipes that contain said ingredient.
 
-
+----------------
 
 ## Collaborators
 - Adan Abdillahi
@@ -111,7 +112,6 @@ A user's cupboard is a list of all ingredients the user has at their disposal. I
 - Ed Hulbert
 
 
-## License
 
 
 
