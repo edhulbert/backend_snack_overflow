@@ -1,6 +1,7 @@
 package com.bnta.backend_snack_overflow.controllers;
 
 import com.bnta.backend_snack_overflow.models.Ingredient;
+import com.bnta.backend_snack_overflow.models.Recipe;
 import com.bnta.backend_snack_overflow.models.User;
 import com.bnta.backend_snack_overflow.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,18 @@ public class UserController {
     public ResponseEntity<List<Ingredient>> getUserCupboard(@PathVariable Long id) {
         var user = userRepository.findById(id);
         return new ResponseEntity<>(user.get().getCupboard(), user.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/cupboard/recipes")
+    public ResponseEntity<List<Recipe>> getRecipesBasedOnCupboard(@PathVariable Long id) {
+        return new ResponseEntity<>(userRepository.findRecipeByCupboardAndId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/fave-recipes")
+    public ResponseEntity<List<Recipe>> getUserFaveRecipes(@PathVariable Long id) {
+        var user = userRepository.findById(id);
+        return new ResponseEntity<>(user.get().getFaveRecipes(), user.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+
     }
     //CREATE
     @PostMapping

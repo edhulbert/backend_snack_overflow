@@ -2,6 +2,7 @@ package com.bnta.backend_snack_overflow;
 
 import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
 import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
+import com.bnta.backend_snack_overflow.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,9 @@ class BackendSnackOverflowApplicationTests {
 
 @Autowired
 private RecipeRepository recipeRepository;
+
+@Autowired
+private UserRepository userRepository;
 
 @Autowired
 private IngredientRepository ingredientRepository;
@@ -69,6 +73,12 @@ private IngredientRepository ingredientRepository;
 	@Test
 	public void canFindByMultipleIngredients(){
 		assertThat(recipeRepository.findRecipeByMeasurements_Ingredient_NameInIgnoreCase(Arrays.asList("Chicken")).get(1)).isEqualTo(recipeRepository.findById(1L).get());
+	}
+
+
+	@Test
+	public void canFindRecipesBasedOnCupboard() {
+		assertThat(userRepository.findRecipeByCupboardAndId(1L).get(0)).isEqualTo(recipeRepository.findById(1L).get());
 	}
 
 }
