@@ -1,10 +1,7 @@
 package com.bnta.backend_snack_overflow.components;
 
 import com.bnta.backend_snack_overflow.models.*;
-import com.bnta.backend_snack_overflow.repositories.EquipmentRepository;
-import com.bnta.backend_snack_overflow.repositories.IngredientRepository;
-import com.bnta.backend_snack_overflow.repositories.MeasurementRepository;
-import com.bnta.backend_snack_overflow.repositories.RecipeRepository;
+import com.bnta.backend_snack_overflow.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -27,6 +24,9 @@ public class Dataloader implements ApplicationRunner {
 
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -147,5 +147,8 @@ public class Dataloader implements ApplicationRunner {
                 measurement23, measurement24, measurement25, measurement26, measurement27, measurement28, measurement29, measurement30,
                 measurement32, measurement33, measurement34, measurement35, measurement36, measurement37, measurement38,
                 measurement39, measurement40, measurement41, measurement42, measurement43, measurement44, measurement45, measurement46));
+
+        User user1 = new User("mattyp","123");
+        userRepository.save(user1);
     }
 }
