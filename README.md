@@ -1,4 +1,4 @@
-# backend_snack_overflow
+# SnackOverflow - A Tasty Java API
 
 
 ## Description
@@ -9,17 +9,19 @@ The program allows the user to add a list of ingredients they have available to 
 
 The user is also able to filter recipes based on ingredients they do not want to see (i.e. dietary restrictions), and also sort the recipes based on the total time it takes to prepare and cook. 
 
-Below is a description of all models available, along with the 
+Below is a description of all models available, along with the Class Diagram and Entity Relationship Diagram.
 
 #### Users
 A user object contains a unique id, a username, a password, a list of favourite recipes, and a list of ingredients - their "cupboard". A specific user's cupboard and favourite recipes can be accessed directly with a GET request, described in the "How to use the API" section of this ReadMe.
 
 #### Recipes
-Recipes contain an id, a name, preparation time, cooking time,
+Recipes contain an id, a name, preparation time, cooking time, the number of people it feeds, a list of *measurements* (see below), and a list of equipment needed. Recipes can be filtered by name, ingredient, and dietary restriction. Recipes can also be sorted by total time to make (prep time & cook time).
+
 #### Ingredients
+Ingredients have an id, a name, and a list of *measurements* (see below). 
 
 #### Measurements
-
+There is an implied many-to-many relationship between recipes and ingredients, but to allow for the *amount* of ingredient used in each recipe, the measurements object is used. Each measurement contains one recipe and one ingredient, and the amount of ingredient that is used by said recipe. This is stored as a string to allow for different units (e.g. "a pinch" and "2g" are valid measurements of salt). If the ingredient or recipe attached a measurement is deleted, the measurement is removed too.
 #### Equipment
  Each equipment object has a unique id, a name, and a list of recipes that it is used in. This relationship with recipes is many-to-many. Equipment can be created, updated and deleted, without affecting the recipes that it is attached to.
 ### Class Diagram
@@ -104,5 +106,6 @@ A user's cupboard is a list of all ingredients the user has at their disposal. I
 
 
 ## License
+
 
 
